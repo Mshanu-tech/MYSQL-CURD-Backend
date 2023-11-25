@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // Add this line to parse JSON in the request body
+app.use(express.json()); 
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -46,7 +46,7 @@ console.log(companyName, price, category, subCategory, ProductDetails);
 
 
 app.get("/users", (req, res) => {
-  const sql = "SELECT * FROM new_table"; // Replace 'new_table' with your actual table name
+  const sql = "SELECT * FROM new_table";
   db.query(sql, (err, data) => {
     if (err) {
       console.error("Error retrieving data:", err);
@@ -72,7 +72,6 @@ app.delete("/users/:id",(req,res) => {
   
 })
 
-// Add this endpoint to handle PUT requests for updating data
 app.put("/users/:id", (req, res) => {
   const productId = req.params.id;
   const { companyName, price, category, subCategory, ProductDetails } = req.body;
