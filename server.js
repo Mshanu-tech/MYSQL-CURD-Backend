@@ -23,12 +23,11 @@ db.connect((err) => {
 
 app.get("/", (req, res) => {
   return res.json("from backend side");
-});
+}); 
 
 app.post("/users", (req, res) => {
   const { companyName, price, category, subCategory, ProductDetails } = req.body;
 console.log(companyName, price, category, subCategory, ProductDetails);
-  // const id = "1367357";
 
   const sql = `INSERT INTO new_table (companyName, price, category, subCategory, ProductDetails) VALUES 
   ("${companyName}", "${price}", "${category}", "${subCategory}", "${ProductDetails}");  `;
@@ -85,7 +84,6 @@ app.put("/users/:id", (req, res) => {
         console.error("Error updating data:", err);
         return res.status(500).json({ error: "Internal Server Error" });
       }
-
       console.log("Data updated successfully!");
       return res.status(200).json({ message: "Data updated successfully" });
     }
